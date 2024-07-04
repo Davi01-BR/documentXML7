@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="style.css"/>
+            </head>
+            <body>
+                <h1>Luca's Loaves Products</h1>
+                <xsl:apply-templates select="Products"/>
+            </body>
+        </html>
+    </xsl:template>
+
+    <xsl:template match="Products">
+        <div class="products">
+            <xsl:apply-templates select="Product"/>
+        </div>
+    </xsl:template>
+
+    <xsl:template match="Product">
+        <div class="product">
+            <h2><xsl:value-of select="Name"/></h2>
+            <p><xsl:value-of select="Price"/></p>
+            <p><xsl:value-of select="Description"/></p>
+        </div>
+    </xsl:template>
+</xsl:stylesheet>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product h2 {
+    color: #666;
+    margin-top: 0;
+}
+
+.product p {
+    color: #888;
+    margin: 5px 0;
+}
