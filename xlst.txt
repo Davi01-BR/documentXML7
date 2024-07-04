@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="style.css"/>
+            </head>
+            <body>
+                <h1>Luca's Loaves Products</h1>
+                <xsl:apply-templates select="Products"/>
+            </body>
+        </html>
+    </xsl:template>
+
+    <xsl:template match="Products">
+        <div class="products">
+            <xsl:apply-templates select="Product"/>
+        </div>
+    </xsl:template>
+
+    <xsl:template match="Product">
+        <div class="product">
+            <h2><xsl:value-of select="Name"/></h2>
+            <p><xsl:value-of select="Price"/></p>
+            <p><xsl:value-of select="Description"/></p>
+        </div>
+    </xsl:template>
+</xsl:stylesheet>
